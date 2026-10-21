@@ -1,5 +1,7 @@
 {
-  "version": 2,
+  "framework": null,
+  "buildCommand": null,
+  "outputDirectory": ".",
   "redirects": [
     {
       "source": "/portfolios/v3",
@@ -16,17 +18,6 @@
     {
       "source": "/portfolios/v6/api/send",
       "destination": "/api/send"
-    },
-    {
-      "source": "/(models|draco|videos|images|assets)/(.*)",
-      "has": [
-        {
-          "type": "header",
-          "key": "referer",
-          "value": ".*\\/portfolios\\/(?<version>v[1-7])\\/.*"
-        }
-      ],
-      "destination": "/portfolios/:version/$1/$2"
     },
     {
       "source": "/draco/:path*",
@@ -53,13 +44,13 @@
       "destination": "/portfolios/v4/videos/:path*"
     },
     {
-      "source": "/portfolios/v7/((?!assets/|images/|favicon\\.ico).*)",
+      "source": "/portfolios/v7/:path*",
       "destination": "/portfolios/v7/index.html"
     }
   ],
   "headers": [
     {
-      "source": "/portfolios/(.*)",
+      "source": "/portfolios/:path*",
       "headers": [
         {
           "key": "X-Frame-Options",
