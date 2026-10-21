@@ -9,6 +9,11 @@
       "permanent": false
     },
     {
+      "source": "/portfolios/v3/",
+      "destination": "/portfolios/v2/",
+      "permanent": false
+    },
+    {
       "source": "/portfolios/v3/:path*",
       "destination": "/portfolios/v2/",
       "permanent": false
