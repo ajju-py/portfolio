@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ajay Tandale — Unified Portfolio Roulette
 
-## Getting Started
+Welcome to the unified portfolio web application for **Ajay Tandale** ([ajaytandale.in](https://ajaytandale.in)).
 
-First, run the development server:
+This application aggregates 6 distinct, production-grade 3D and interactive portfolio variations into a single roulette experience with a non-repeating randomizer, developer switcher HUD, same-origin viewport mounting, and a centralized Gmail SMTP contact form backend.
+
+---
+
+## Active Portfolio Variants (6)
+
+| Variant | Architecture | Key Visual / Technical Highlight | Route |
+| :--- | :--- | :--- | :--- |
+| **V1** | React 19 + Vite 6 + Tailwind CSS v4 | Falling Spaceman 3D Canvas, OrbitControls | `/portfolios/v1/` |
+| **V2** | React 18 + Vite 5 + Three.js + GSAP | Red Hat Professional Cloud Profile, 3D Character Model, Draco Compression | `/portfolios/v2/` |
+| **V4** | React 18 + Vite 5 + GSAP | High-Resolution Interactive Cyborg Transformation | `/portfolios/v4/` |
+| **V5** | React 19 + Vite 6 + Tailwind CSS v4 | Isometric 3D Developer Room (2025 Edition) | `/portfolios/v5/` |
+| **V6** | Next.js 16 + React 19 App Router | 3D Mechanical Keycaps, Blog & Engineering Arena | `/portfolios/v6/` |
+| **V7** | React 18 + Vite 4 + React Router | Sky Island Flight Simulation, 3D Plane & Fox | `/portfolios/v7/` |
+
+> **Note on V3:** Portfolio V3 has been permanently excluded from the roulette rotation and automatically redirects to **V2** via Edge rewrites and HTTP 302 redirects.
+
+---
+
+## Production Deployment & Architecture
+
+- **Host:** Vercel Edge Network (`Server: Vercel`, Anycast CDN)
+- **Domain:** `https://ajaytandale.in` / `https://www.ajaytandale.in`
+- **Routing Engine:** `vercel.json` edge redirects, referer-aware asset rewrites, and SPA client routing
+- **Serverless API:**
+  - `POST /api/send` — Nodemailer Gmail SMTP transmission with input sanitization, RFC 5322 validation, and rate limiting
+  - `GET /api/versions` — Health check and active version registry
+- **Self-Hosting / Local Server:** `server.js` provides a complete standalone Express server for local development or container deployment.
+
+---
+
+## Environment Variables
+
+For contact form functionality, configure the following encrypted environment variables in the hosting provider (or local `.env`):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=465
+SMTP_SECURE=true
+SMTP_USER=ajaytandale8983@gmail.com
+SMTP_PASS=<16-character-google-app-password>
+CONTACT_TO=work.ajaytandale@gmail.com
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Local Development & Testing
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Install dependencies
+npm install
 
-## Learn More
+# Start Express server locally
+npm start
+# -> Runs at http://localhost:3000
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+# Run automated roulette test suite
+npm test
+```

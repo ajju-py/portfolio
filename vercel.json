@@ -1,0 +1,80 @@
+{
+  "version": 2,
+  "redirects": [
+    {
+      "source": "/portfolios/v3",
+      "destination": "/portfolios/v2/",
+      "permanent": false
+    },
+    {
+      "source": "/portfolios/v3/:path*",
+      "destination": "/portfolios/v2/",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/portfolios/v6/api/send",
+      "destination": "/api/send"
+    },
+    {
+      "source": "/(models|draco|videos|images|assets)/(.*)",
+      "has": [
+        {
+          "type": "header",
+          "key": "referer",
+          "value": ".*\\/portfolios\\/(?<version>v[1-7])\\/.*"
+        }
+      ],
+      "destination": "/portfolios/:version/$1/$2"
+    },
+    {
+      "source": "/draco/:path*",
+      "destination": "/portfolios/v2/draco/:path*"
+    },
+    {
+      "source": "/models/character.enc",
+      "destination": "/portfolios/v2/models/character.enc"
+    },
+    {
+      "source": "/models/char_enviorment.hdr",
+      "destination": "/portfolios/v2/models/char_enviorment.hdr"
+    },
+    {
+      "source": "/models/tenhun_falling_spaceman_fanart.glb",
+      "destination": "/portfolios/v1/models/tenhun_falling_spaceman_fanart.glb"
+    },
+    {
+      "source": "/models/computer-optimized.glb",
+      "destination": "/portfolios/v5/models/computer-optimized.glb"
+    },
+    {
+      "source": "/videos/:path*",
+      "destination": "/portfolios/v4/videos/:path*"
+    },
+    {
+      "source": "/portfolios/v7/((?!assets/|images/|favicon\\.ico).*)",
+      "destination": "/portfolios/v7/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/portfolios/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)\\.(glb|gltf|wasm|hdr|enc|mp4|mp3)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ]
+}

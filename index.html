@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajay Tandale — Unified Portfolio</title>
+    <meta
+      name="description"
+      content="Unified portfolio roulette of Ajay Tandale — featuring 6 interactive 3D portfolio experiences covering Linux administration, Red Hat certification, containerization, cloud infrastructure, and software engineering."
+    />
+    <meta name="author" content="Ajay Tandale" />
+    <link rel="icon" type="image/svg+xml" href="/portfolios/v1/assets/logos/redhat.svg" />
+    <link rel="stylesheet" href="/roulette.css" />
+  </head>
+  <body>
+    <!-- Top Progress Indicator for Version Swapping -->
+    <div id="transition-indicator" aria-hidden="true"></div>
+
+    <!-- Full-screen Seamless Same-Origin Portfolio Viewport -->
+    <div id="viewport-container">
+      <iframe
+        id="portfolio-frame"
+        title="Ajay Tandale Portfolio"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+      ></iframe>
+    </div>
+
+    <!-- Floating Interactive Roulette HUD (Version Identifier & Switcher) -->
+    <aside id="roulette-hud" class="roulette-hud" aria-label="Portfolio Roulette Controls">
+      <div class="hud-status">
+        <span class="pulse-dot" title="Active"></span>
+        <span class="hud-label">Roulette:</span>
+        <span id="hud-current-version" class="hud-version-tag">Loading...</span>
+      </div>
+
+      <div class="hud-divider"></div>
+
+      <button id="hud-reroll-btn" type="button" class="hud-btn" title="Pick another random version (non-repeating)">
+        <span>↻</span> <span>Re-roll</span>
+      </button>
+
+      <select id="hud-select" class="hud-select" title="Jump to specific version" aria-label="Select portfolio version">
+        <!-- Dynamically populated -->
+      </select>
+
+      <button id="hud-direct-btn" type="button" class="hud-btn" title="Open this version directly in subpath">
+        <span>↗ Direct</span>
+      </button>
+
+      <button id="hud-close-btn" type="button" class="hud-close-btn" title="Minimize HUD" aria-label="Minimize HUD">
+        ✕
+      </button>
+    </aside>
+
+    <!-- Collapsed Floating Badge -->
+    <button id="roulette-mini-badge" class="roulette-mini-badge" type="button" title="Expand Portfolio Roulette HUD">
+      <span>🎲</span> <span>ROULETTE</span>
+    </button>
+
+    <script src="/roulette.js"></script>
+  </body>
+</html>

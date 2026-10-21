@@ -1,0 +1,22 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="10" fill="#0d1527"/>
+  <rect x="0.5" y="0.5" width="47" height="47" rx="9.5" stroke="url(#border_grad)" stroke-opacity="0.6"/>
+  <!-- Letter A -->
+  <path d="M12 33L19.5 15H22.5L30 33H26.2L24.5 28.5H17.5L15.8 33H12ZM18.5 25.5H23.5L21 19L18.5 25.5Z" fill="url(#paint_at)"/>
+  <!-- Letter T overlaid -->
+  <path d="M25 18H36V21.5H32V33H29V21.5H25V18Z" fill="url(#paint_t)"/>
+  <defs>
+    <linearGradient id="paint_at" x1="12" y1="33" x2="28" y2="15" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#60a5fa"/>
+    </linearGradient>
+    <linearGradient id="paint_t" x1="25" y1="18" x2="36" y2="33" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0284c7"/>
+      <stop offset="1" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="border_grad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#38bdf8"/>
+      <stop offset="1" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+</svg>

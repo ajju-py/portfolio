@@ -1,0 +1,19 @@
+{
+  "status": 200,
+  "headers": {
+    "link": "</_next/static/media/0c89a48fa5027cee-s.p.0rd3rjvnnhw7n.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/media/b59689b1142d37ce-s.p.0f8~qglggluhl.woff2>; rel=preload; as=\"font\"; crossorigin=\"\"; type=\"font/woff2\", </_next/static/chunks/00g42vxb~e52u.css>; rel=preload; as=\"style\", </_next/static/chunks/0ejz2abdy-8e9.css>; rel=preload; as=\"style\"",
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/blogs/layout,_N_T_/blogs/[slug]/layout,_N_T_/blogs/[slug]/page"
+  },
+  "postponed": "1514:46[[\"slug\",[\"%%drp:slug:3640438d48d098%%\",\"d\"]]][0,{\"nextSegmentId\":0,\"rootFormatContext\":{\"insertionMode\":0,\"selectedValue\":null,\"tagScope\":0,\"viewTransition\":null},\"progressiveChunkSize\":12800,\"resumableState\":{\"idPrefix\":\"\",\"nextFormID\":0,\"streamingFormat\":0,\"bootstrapScripts\":[{\"src\":\"/_next/static/chunks/0gjuvma-b8q8-.js\"}],\"instructions\":0,\"hasBody\":false,\"hasHtml\":false,\"unknownResources\":{\"font\":{\"/_next/static/media/0c89a48fa5027cee-s.p.0rd3rjvnnhw7n.woff2\":[],\"/_next/static/media/b59689b1142d37ce-s.p.0f8~qglggluhl.woff2\":[]}},\"dnsResources\":{},\"connectResources\":{\"default\":{},\"anonymous\":{},\"credentials\":{}},\"imageResources\":{},\"styleResources\":{\"/_next/static/chunks/00g42vxb~e52u.css\":[],\"/_next/static/chunks/0ejz2abdy-8e9.css\":[]},\"scriptResources\":{},\"moduleUnknownResources\":{},\"moduleScriptResources\":{}},\"replayNodes\":[[\"lk\",0,[[\"Context\",0,[[\"Context\",0,[[\"ServerInsertedHTMLProvider\",0,[[\"Context\",0,[[\"ow\",0,[[\"s5\",0,[[\"s9\",0,[[\"s8\",0,[[\"ob\",0,[[\"Fragment\",0,[[\"Context\",2,[[\"Context\",0,[[\"Context\",0,[[\"Context\",0,[[\"Context\",0,[[\"Context\",0,[[\"Context\",0,[[\"s5\",0,[[\"s9\",0,[[\"s8\",0,[[\"n7\",0,[[\"n5\",0,[[\"ov\",\"/blogs/slug|%%drp:slug:3640438d48d098%%|d/__PAGE__\",[[\"Fragment\",\"h\",[[\"div\",2,[[\"__next_metadata_boundary__\",0,[[\"Suspense\",0,[],0,[\"Suspense Fallback\",0,[],null],0]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],null]],\"replaySlots\":-1}]eJxVj8tOwzAURP/lrg2KQ5zg7IIoEiCgqtigposb57o1ygvbKaki/ztKYVF2oxnp6MwMzveWIJ9Bk1cHyOfAQKE6nLttCc3H+8Nam0F9d5xzu3FiffVVAivhNiKlUMQ6k1KnWleUVEgVopAcK16pWss01qLOSmDb3W4BUuftaQlHbEaCHF7ue/O0KqbHfT+9fRbPwMDj3kG+3TFwHhuC/CaKGHjTkvPYDpDzTMZCcp6mQvLrWEgGNA1muZHEMpFpFsuEgaUjNqZG/4sIDA7oVtPQGGX85mL0dqR/4+qPprFxtICw3vS9X6PF9hVbOuuFwIA6ZU+Dp/quH7u6sIv4HEL4AR45cEQ=",
+  "segmentPaths": [
+    "/_tree",
+    "/_full",
+    "/blogs/$d$slug/__PAGE__",
+    "/blogs/$d$slug",
+    "/blogs",
+    "/_index",
+    "/_head"
+  ]
+}

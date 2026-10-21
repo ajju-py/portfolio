@@ -1,0 +1,17 @@
+{
+  "node": {
+    "80ecca52f799f6ffbe4baebaa591ab1bcdf962f5d7": {
+      "workers": {
+        "app/blogs/page": {
+          "moduleId": 61964,
+          "async": false,
+          "exportedName": "$$RSC_SERVER_CACHE_0",
+          "filename": "src/lib/github-stars.ts"
+        }
+      },
+      "exportedName": "$$RSC_SERVER_CACHE_0",
+      "filename": "src/lib/github-stars.ts"
+    }
+  },
+  "edge": {}
+}
