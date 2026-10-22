@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <rect width="256" height="256" rx="32" fill="#0f172a"/>
+  <!-- stylized Linux Penguin Tux -->
+  <ellipse cx="128" cy="135" rx="50" ry="65" fill="#1e293b"/>
+  <ellipse cx="128" cy="145" rx="35" ry="50" fill="#f8fafc"/>
+  <circle cx="128" cy="75" r="35" fill="#1e293b"/>
+  <circle cx="118" cy="70" r="6" fill="#f8fafc"/>
+  <circle cx="138" cy="70" r="6" fill="#f8fafc"/>
+  <circle cx="119" cy="71" r="3" fill="#0f172a"/>
+  <circle cx="137" cy="71" r="3" fill="#0f172a"/>
+  <path d="M116 82h24l-12 14z" fill="#f59e0b"/>
+  <!-- feet -->
+  <ellipse cx="105" cy="200" rx="20" ry="10" fill="#f59e0b"/>
+  <ellipse cx="151" cy="200" rx="20" ry="10" fill="#f59e0b"/>
+  <!-- flippers -->
+  <ellipse cx="75" cy="140" rx="10" ry="30" fill="#1e293b" transform="rotate(-15 75 140)"/>
+  <ellipse cx="181" cy="140" rx="10" ry="30" fill="#1e293b" transform="rotate(15 181 140)"/>
+  <text x="128" y="238" text-anchor="middle" fill="#38bdf8" font-family="system-ui, sans-serif" font-weight="900" font-size="20">LINUX</text>
+</svg>

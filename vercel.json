@@ -25,24 +25,12 @@
       "destination": "/api/send"
     },
     {
+      "source": "/_next/:path*",
+      "destination": "/portfolios/v6/_next/:path*"
+    },
+    {
       "source": "/draco/:path*",
       "destination": "/portfolios/v2/draco/:path*"
-    },
-    {
-      "source": "/models/character.enc",
-      "destination": "/portfolios/v2/models/character.enc"
-    },
-    {
-      "source": "/models/char_enviorment.hdr",
-      "destination": "/portfolios/v2/models/char_enviorment.hdr"
-    },
-    {
-      "source": "/models/tenhun_falling_spaceman_fanart.glb",
-      "destination": "/portfolios/v1/models/tenhun_falling_spaceman_fanart.glb"
-    },
-    {
-      "source": "/models/computer-optimized.glb",
-      "destination": "/portfolios/v5/models/computer-optimized.glb"
     },
     {
       "source": "/videos/:path*",

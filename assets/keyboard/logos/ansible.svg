@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <rect width="256" height="256" rx="32" fill="#000000"/>
+  <circle cx="128" cy="115" r="70" fill="none" stroke="#ee0000" stroke-width="12"/>
+  <path d="M128 65l40 85h-18l-8-20h-28l-8 20H88l40-85zm-9 47h18l-9-24-9 24z" fill="#ffffff"/>
+  <text x="128" y="235" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="bold" font-size="24">ANSIBLE</text>
+</svg>

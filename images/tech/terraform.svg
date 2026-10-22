@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <rect width="256" height="256" rx="32" fill="#1b1c2b"/>
+  <g fill="#7b42bc">
+    <path d="M92 48l52 30v60l-52-30z"/>
+    <path d="M152 82l52 30v60l-52-30z" fill="#844fba"/>
+    <path d="M92 118l52 30v60l-52-30z" fill="#5c4ee5"/>
+    <path d="M32 82l52 30v60l-52-30z" fill="#623ce4"/>
+  </g>
+  <text x="128" y="235" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-weight="bold" font-size="22">TERRAFORM</text>
+</svg>
