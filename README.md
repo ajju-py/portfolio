@@ -1,63 +1,90 @@
-# Ajay Tandale — Unified Portfolio Roulette
+<div align="center">
 
-Welcome to the unified portfolio web application for **Ajay Tandale** ([ajaytandale.in](https://ajaytandale.in)).
+# ☁️ Ajay Tandale — 3D Cloud Engineer & DevOps Portfolio
 
-This application aggregates 6 distinct, production-grade 3D and interactive portfolio variations into a single roulette experience with a non-repeating randomizer, developer switcher HUD, same-origin viewport mounting, and a centralized Gmail SMTP contact form backend.
+**Building secure, scalable infrastructure through Linux, cloud technologies, and automation.**
 
----
+### [🌐 Live Portfolio → ajaytandale.in](https://ajaytandale.in)
 
-## Active Portfolio Variants (6)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Next.js 16](https://img.shields.io/badge/Next.js-16.2.2-black?logo=next.js)](https://nextjs.org)
+[![Three.js](https://img.shields.io/badge/Three.js-0.185-black?logo=three.js)](https://threejs.org)
+[![Red Hat](https://img.shields.io/badge/Red%20Hat-RHCSA%20Certified-EE0000?logo=redhat)](https://www.credly.com/users/ajay-tandale)
+[![Vercel Deployment](https://img.shields.io/badge/Hosted%20on-Vercel-black?logo=vercel)](https://vercel.com)
 
-| Variant | Architecture | Key Visual / Technical Highlight | Route |
-| :--- | :--- | :--- | :--- |
-| **V1** | React 19 + Vite 6 + Tailwind CSS v4 | Falling Spaceman 3D Canvas, OrbitControls | `/portfolios/v1/` |
-| **V2** | React 18 + Vite 5 + Three.js + GSAP | Red Hat Professional Cloud Profile, 3D Character Model, Draco Compression | `/portfolios/v2/` |
-| **V4** | React 18 + Vite 5 + GSAP | High-Resolution Interactive Cyborg Transformation | `/portfolios/v4/` |
-| **V5** | React 19 + Vite 6 + Tailwind CSS v4 | Isometric 3D Developer Room (2025 Edition) | `/portfolios/v5/` |
-| **V6** | Next.js 16 + React 19 App Router | 3D Mechanical Keycaps, Blog & Engineering Arena | `/portfolios/v6/` |
-| **V7** | React 18 + Vite 4 + React Router | Sky Island Flight Simulation, 3D Plane & Fox | `/portfolios/v7/` |
-
-> **Note on V3:** Portfolio V3 has been permanently excluded from the roulette rotation and automatically redirects to **V2** via Edge rewrites and HTTP 302 redirects.
+</div>
 
 ---
 
-## Production Deployment & Architecture
+## 👨‍💻 About Ajay Tandale
+Computer Science Engineering student at Maharashtra Institute of Technology and entry-level Cloud Engineer with a strong Red Hat & Linux foundation (RHCSA EX200 & DO188 certified). Focused on Linux administration, Infrastructure as Code using Terraform and Ansible, cloud hosting on AWS, containerization with Podman and Docker, and cybersecurity hardening.
 
-- **Host:** Vercel Edge Network (`Server: Vercel`, Anycast CDN)
-- **Domain:** `https://ajaytandale.in` / `https://www.ajaytandale.in`
-- **Routing Engine:** `vercel.json` edge redirects, referer-aware asset rewrites, and SPA client routing
-- **Serverless API:**
-  - `POST /api/send` — Nodemailer Gmail SMTP transmission with input sanitization, RFC 5322 validation, and rate limiting
-  - `GET /api/versions` — Health check and active version registry
-- **Self-Hosting / Local Server:** `server.js` provides a complete standalone Express server for local development or container deployment.
+* **Location:** Chhatrapati Sambhajinagar, Maharashtra, India
+* **Credentials:** Red Hat Certified System Administrator (RHCSA EX200), Red Hat Certified Developer in Cloud-native Applications (DO188), Infosys Springboard Networking & Web Technology
+* **GitHub:** [@ajju-py](https://github.com/ajju-py)
+* **LinkedIn:** [ajay-tandale](https://www.linkedin.com/in/ajay-tandale-8030b8231/)
+* **Credly Profile:** [ajay-tandale](https://www.credly.com/users/ajay-tandale)
 
 ---
 
-## Environment Variables
+## ✨ Key Portfolio Features
 
-For contact form functionality, configure the following encrypted environment variables in the hosting provider (or local `.env`):
+* **Interactive 3D Skills Keyboard** — 24 procedural keycaps rendering core Cloud, Linux, and DevOps technologies (Linux, RHEL, RHCSA, OpenShift, Podman, Docker, AWS, Terraform, Ansible, Python, Bash, Git, GitHub, Nginx, MariaDB, SELinux, Networking, CI/CD, systemd, firewalld, LVM, SSH, CloudWatch, S3) with physical shortcut keypresses, audio feedback, wear accumulation, and interactive details modals.
+* **Verified Certifications Showcase** — Credly badge verification for RHCSA (EX200), DO188 (EX188), and Red Hat Academy curriculum badges.
+* **Cloud & Infrastructure Projects** — Detailed architecture breakdowns for AWS Terraform hosting, Ansible Linux automation, RHEL 9.3 hardening labs, LinuxOps diagnostics, Floci local cloud emulator, and ESP32 IoT energy telemetry.
+* **Dual-Mailer Contact Gateway** — High-reliability contact API supporting Resend, Nodemailer Gmail SMTP fallback, and client-side mailto fallback with anti-abuse rate limiting and input sanitization.
+* **Performance & Dark Aesthetics** — Deep navy/black palette with cyan and violet accents, smooth GSAP animations, Framer Motion transitions, responsive mobile layouts, and zero-flicker client hydration.
 
+---
+
+## 🛠️ Technology Stack
+
+| Layer | Technologies |
+|---|---|
+| **Framework & Engine** | Next.js 16.2.2 (Turbopack, App Router), React 19.2.4, TypeScript 5 |
+| **3D Rendering** | Three.js `0.185.1`, `@chibi3d/runtime` `0.5.0`, `@react-three/fiber` `9.8.1` |
+| **Styling & UI** | Tailwind CSS v3, Radix UI Primitives, Lucide Icons, Aceternity UI |
+| **Animations & Scroll** | GSAP 3.12, Motion 12, Lenis smooth scrolling |
+| **Email Gateway** | Resend SDK + Nodemailer Gmail SMTP fallback + mailto |
+| **Hosting & CI/CD** | Vercel (Edge Network), GitHub Actions |
+
+---
+
+## 🚀 Local Development
+
+### 1. Prerequisites
+* Node.js `>= 20.9.0`
+* Package Manager: `pnpm` (or `npm`)
+
+### 2. Installation
 ```bash
-SMTP_HOST=smtp.gmail.com
-SMTP_PORT=465
-SMTP_SECURE=true
-SMTP_USER=ajaytandale8983@gmail.com
-SMTP_PASS=<16-character-google-app-password>
-CONTACT_TO=work.ajaytandale@gmail.com
+git clone https://github.com/ajju-py/portfolio.git
+cd portfolio
+pnpm install
+```
+
+### 3. Environment Variables (Optional)
+Copy `.env.example` to `.env.local`:
+```bash
+cp .env.example .env.local
+```
+
+### 4. Running the Dev Server
+```bash
+pnpm dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### 5. Verification & Production Build
+```bash
+pnpm typecheck
+pnpm lint
+pnpm build
 ```
 
 ---
 
-## Local Development & Testing
+## 📄 License & Attribution
 
-```bash
-# Install dependencies
-npm install
-
-# Start Express server locally
-npm start
-# -> Runs at http://localhost:3000
-
-# Run automated roulette test suite
-npm test
-```
+This project is licensed under the [MIT License](LICENSE).  
+Interactive 3D keyboard architecture based upon the open-source foundation by [Naresh Khatri](https://github.com/Naresh-Khatri/3d-portfolio).
