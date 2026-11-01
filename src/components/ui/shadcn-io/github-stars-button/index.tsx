@@ -61,8 +61,8 @@ function GitHubStarsButton({
   const [displayParticles, setDisplayParticles] = useState(false);
 
   const repoUrl = useMemo(
-    () => `https://github.com/${username}/${repo}`,
-    [username, repo],
+    () => (props.href as string) || `https://github.com/${username}`,
+    [props.href, username],
   );
 
   const handleDisplayParticles = useCallback(() => {

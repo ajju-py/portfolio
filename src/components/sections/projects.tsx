@@ -38,7 +38,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
       <ResponsiveDialog>
         <ResponsiveDialogTrigger className="bg-transparent flex justify-center w-full">
           <div
-            className="group relative w-full max-w-[400px] h-auto rounded-lg overflow-hidden ring-1 ring-white/5"
+            className="group relative w-full max-w-[400px] h-auto rounded-lg overflow-hidden border border-border/80 dark:border-white/10 shadow-sm"
             style={{ aspectRatio: "3/2" }}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
@@ -55,7 +55,7 @@ const ProjectCard = ({ project }: { project: Project }) => {
             />
             <div className="absolute w-full h-24 bottom-0 left-0 bg-gradient-to-t from-background via-background/80 to-transparent pointer-events-none z-10">
               <div className="flex flex-col h-full items-start justify-end p-4">
-                <div className="text-lg text-left [text-shadow:0_1px_4px_rgba(0,0,0,0.6)]">
+                <div className="text-base sm:text-lg font-bold text-foreground text-left line-clamp-2">
                   {project.title}
                 </div>
                 <div className="text-xs bg-primary text-primary-foreground rounded-lg w-fit px-2">

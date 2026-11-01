@@ -27,11 +27,9 @@ const SkillsSection = () => {
   return (
     <SectionWrapper
       id="skills"
-      className={
-        showGrid
-          ? "flex w-full min-h-screen flex-col justify-center py-24"
-          : "w-full h-screen md:h-[150dvh] pointer-events-none"
-      }
+      className={showGrid
+        ? "flex w-full min-h-screen flex-col justify-center py-24"
+        : "w-full h-screen md:h-[150dvh] pointer-events-none"}
     >
       <SectionHeader
         id="skills"
@@ -39,13 +37,7 @@ const SkillsSection = () => {
         desc={showGrid ? "Tools I build with" : "(hint: press a key)"}
         className={showGrid ? "static mb-14" : undefined}
       />
-      <ul
-        className={
-          showGrid
-            ? "mx-auto grid w-full max-w-5xl grid-cols-2 gap-3 px-4 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5"
-            : "sr-only"
-        }
-      >
+      <ul className={showGrid ? "mx-auto grid w-full max-w-5xl grid-cols-2 gap-3 px-4 sm:grid-cols-3 sm:gap-4 md:grid-cols-4 lg:grid-cols-5" : "sr-only"}>
         {Object.values(SKILLS).map((skill) => (
           <li
             key={skill.name}

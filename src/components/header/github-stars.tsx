@@ -20,6 +20,7 @@ export default async function GitHubStars({ className }: { className?: string })
       repo={config.githubRepo}
       stars={stars}
       className={className}
+      href={config.social.github}
     />
   );
 }

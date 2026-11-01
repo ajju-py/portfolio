@@ -9,7 +9,6 @@ import { useToast } from "./ui/use-toast";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
-import { config } from "@/data/config";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -52,25 +51,8 @@ const ContactForm = () => {
         body: JSON.stringify({ fullName, email, message }),
       });
       if (!res.ok) {
-        // Fallback to mailto if Resend key is missing or failed
-        const mailtoUrl = `mailto:${config.email}?subject=Portfolio Contact from ${encodeURIComponent(
-          fullName
-        )}&body=${encodeURIComponent(
-          `From: ${fullName} (${email})\n\nMessage:\n${message}`
-        )}`;
-        window.location.href = mailtoUrl;
-
-        toast({
-          title: "Opening Email Client",
-          description: `Directing message to ${config.email}`,
-          variant: "default",
-          className: cn("top-0 mx-auto flex fixed md:top-4 md:right-4"),
-        });
-        setLoading(false);
-        setFullName("");
-        setEmail("");
-        setMessage("");
-        return;
+        const data = await res.json();
+        throw new Error(data.error || `Request failed (${res.status})`);
       }
       toast({
         title: "Thank you!",
@@ -86,26 +68,20 @@ const ContactForm = () => {
         router.push("/");
         clearTimeout(timer);
       }, 1000);
-    } catch {
-      const mailtoUrl = `mailto:${config.email}?subject=Portfolio Contact from ${encodeURIComponent(
-        fullName
-      )}&body=${encodeURIComponent(
-        `From: ${fullName} (${email})\n\nMessage:\n${message}`
-      )}`;
-      window.location.href = mailtoUrl;
-
+    } catch (err) {
       toast({
-        title: "Opening Email Client",
-        description: `Directing message to ${config.email}`,
-        variant: "default",
-        className: cn("top-0 mx-auto flex fixed md:top-4 md:right-4"),
+        title: "Error",
+        description: "Something went wrong! Please try again.",
+        className: cn(
+          "top-0 w-full flex justify-center fixed md:max-w-7xl md:top-4 md:right-4"
+        ),
+        variant: "destructive",
       });
-      setLoading(false);
     }
+    setLoading(false);
   };
-
   return (
-    <form className="min-w-full md:min-w-7xl mx-auto sm:mt-4" onSubmit={handleSubmit} aria-busy={loading}>
+    <form className="min-w-7xl mx-auto sm:mt-4" onSubmit={handleSubmit} aria-busy={loading}>
       <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
         <LabelInputContainer>
           <Label htmlFor="fullname">Full name</Label>
@@ -114,10 +90,7 @@ const ContactForm = () => {
             placeholder="Your Name"
             type="text"
             value={fullName}
-            onChange={(e) => {
-              setFullName(e.target.value);
-              setErrors((p) => ({ ...p, fullName: undefined }));
-            }}
+            onChange={(e) => { setFullName(e.target.value); setErrors((p) => ({ ...p, fullName: undefined })); }}
           />
           {errors.fullName && <p className="text-sm text-red-500">{errors.fullName}</p>}
         </LabelInputContainer>
@@ -128,10 +101,7 @@ const ContactForm = () => {
             placeholder="you@example.com"
             type="email"
             value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              setErrors((p) => ({ ...p, email: undefined }));
-            }}
+            onChange={(e) => { setEmail(e.target.value); setErrors((p) => ({ ...p, email: undefined })); }}
           />
           {errors.email && <p className="text-sm text-red-500">{errors.email}</p>}
         </LabelInputContainer>
@@ -139,13 +109,10 @@ const ContactForm = () => {
       <div className="grid w-full gap-1.5 mb-4">
         <Label htmlFor="content">Your Message</Label>
         <Textarea
-          placeholder="Tell me about your project or opportunity,"
+          placeholder="Tell me about about your project,"
           id="content"
           value={message}
-          onChange={(e) => {
-            setMessage(e.target.value);
-            setErrors((p) => ({ ...p, message: undefined }));
-          }}
+          onChange={(e) => { setMessage(e.target.value); setErrors((p) => ({ ...p, message: undefined })); }}
         />
         {errors.message && <p className="text-sm text-red-500">{errors.message}</p>}
         <p className="text-sm text-muted-foreground">

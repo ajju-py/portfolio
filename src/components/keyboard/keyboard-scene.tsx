@@ -5,11 +5,14 @@ import { ChibiScene, type ChibiSceneApi, type ScenePointerEvent, type RuntimeEve
 import { SKILLS } from "@/data/constants";
 import { setSceneStatus } from "@/lib/scene-health";
 import { usePreloader } from "../preloader";
-import { createKeyboardScene, resolveKeyboardAsset, type KeyboardSkill } from "./scene";
+import { createKeyboardScene, resolveKeyboardAsset, type KeyboardKey, type KeyboardSkill } from "./scene";
 import { createKeyInput, isTypingTarget } from "./input";
 import { createKeyboardMotion, type KeyboardSection } from "./motion";
 import { useKeyboardSounds } from "./use-keyboard-sounds";
 import { useAdaptiveGraphics } from "./use-adaptive-graphics";
+import { useKeyboardCounts } from "./use-keyboard-counts";
+import { keyWear } from "./wear";
+import { createCounterMotion } from "./counter-motion";
 
 const SceneCanvas = memo(ChibiScene);
 const SCENE_STYLE: CSSProperties = {
@@ -24,6 +27,7 @@ export default function KeyboardScene({ maxDpr }: { maxDpr: number }) {
   const api = useRef<ChibiSceneApi>(null);
   const failed = useRef(false);
   const motion = useRef<ReturnType<typeof createKeyboardMotion> | null>(null);
+  const counterMotion = useRef<ReturnType<typeof createCounterMotion> | null>(null);
   const [loadVersion, setLoadVersion] = useState(0);
   const ready = loadVersion > 0;
   const [section, setSection] = useState<KeyboardSection>("hero");
@@ -44,7 +48,25 @@ export default function KeyboardScene({ maxDpr }: { maxDpr: number }) {
   const dpr = useMemo<[number, number]>(() =>
     [0.5, Math.min(graphics.dpr, maxDpr)], [maxDpr, graphics.dpr]);
   const visibleLabel = useRef<string | null>(null);
-  const input = useMemo(() => createKeyInput(scene.keys), [scene]);
+  const heldKeys = useRef<KeyboardKey[]>([]);
+  const input = useMemo(() => createKeyInput(scene.keys, scene.columns), [scene]);
+  const { counts, total, available, recordPress } = useKeyboardCounts();
+  useEffect(() => {
+    if (!ready || !api.current) return;
+    const controller = createCounterMotion(api.current, scene.counter, markActive);
+    counterMotion.current = controller;
+    return () => { controller.dispose(); counterMotion.current = null; };
+  }, [ready, loadVersion, scene, markActive]);
+  useEffect(() => {
+    counterMotion.current?.update(total, available);
+  }, [total, available, ready, loadVersion, scene]);
+  useEffect(() => {
+    if (!ready) return;
+    for (const key of scene.keys) {
+      api.current?.setMaterial(key.materialId, keyWear(counts[key.skill.name] ?? 0));
+    }
+    markActive();
+  }, [counts, ready, loadVersion, scene, markActive]);
   useEffect(() => input.subscribe((key, pressed) => {
     markActive();
     api.current?.transitionNodeTo(key.nodeId, pressed ? key.pressedStateId : "base", { duration: 0.1, ease: "easeInOut" });
@@ -52,14 +74,22 @@ export default function KeyboardScene({ maxDpr }: { maxDpr: number }) {
       emissive: scene.document.materials[key.materialId].color,
       emissiveIntensity: pressed ? 0.7 : 0,
     });
+    heldKeys.current = heldKeys.current.filter((held) => held !== key);
     if (pressed) {
-      api.current?.setNodeVisible(visibleLabel.current ?? scene.defaultLabelId, false);
-      api.current?.setNodeVisible(key.labelId, true);
-      visibleLabel.current = key.labelId;
-      setSelected(key.skill);
+      if (ready && !isLoading && !document.hidden) recordPress(key.skill.name);
+      heldKeys.current.push(key);
     }
+    // latest still-held key wins; none held -> back to default prompt
+    const shown = heldKeys.current.at(-1) ?? null;
+    const labelId = shown?.labelId ?? scene.defaultLabelId;
+    if (labelId !== (visibleLabel.current ?? scene.defaultLabelId)) {
+      api.current?.setNodeVisible(visibleLabel.current ?? scene.defaultLabelId, false);
+      api.current?.setNodeVisible(labelId, true);
+    }
+    visibleLabel.current = shown?.labelId ?? null;
+    setSelected(shown?.skill ?? null);
     playSound(pressed);
-  }), [input, scene, playSound, markActive]);
+  }), [input, scene, playSound, markActive, ready, isLoading, recordPress]);
 
   const onPointerEvent = useCallback((event: ScenePointerEvent) => {
     const pointer = `pointer:${event.pointerId}`;
@@ -100,6 +130,9 @@ export default function KeyboardScene({ maxDpr }: { maxDpr: number }) {
     motion.current = controller;
     return () => { controller.dispose(); motion.current = null; };
   }, [ready, loadVersion, scene, input, markActive]);
+  useEffect(() => {
+    motion.current?.setCounterEnabled(available);
+  }, [available, ready, loadVersion, scene, input, markActive]);
   // Rebind after each runtime load, once the replacement scene's nodes are mounted.
   useEffect(() => {
     if (ready && !isLoading) motion.current?.reveal();
@@ -155,11 +188,12 @@ export default function KeyboardScene({ maxDpr }: { maxDpr: number }) {
         onEvent={onEvent}
       />
       {section === "skills" && ready && (
-        <div className="pointer-events-none fixed inset-x-4 bottom-8 text-center text-foreground">
+        <div className="pointer-events-none fixed inset-x-4 bottom-8 z-20 text-center text-foreground">
+          <p className="sr-only">{available ? `${total.toLocaleString("en-US")} keyboard presses by all visitors` : "Shared keyboard count unavailable"}</p>
           <div aria-live="polite" className="sr-only">
             <p className="text-xl font-semibold">{selected?.label ?? "Explore my skills"}</p>
             <p className="mt-1 text-sm text-muted-foreground">
-              {selected?.shortDescription ?? "Hover, tap, or press a letter key"}
+              {selected?.shortDescription ?? "Hover, tap, or press a key"}
             </p>
           </div>
           <a
