@@ -84,51 +84,36 @@ const HeroSection = () => {
                 <Link
                   href="/Ajay_Tandale_Resume.pdf"
                   target="_blank"
-                  className="flex-1"
+                  className="w-full"
                 >
                   <BoxReveal delay={2} width="100%">
-                    <Button className="flex items-center gap-2 w-full">
-                      <File size={24} />
+                    <Button className="flex items-center justify-center gap-2 w-full min-w-[150px]">
+                      <File size={20} />
                       <p>Resume</p>
                     </Button>
                   </BoxReveal>
                 </Link>
-                <div className="md:self-start flex gap-3">
-                  <Tooltip delayDuration={300}>
-                    <TooltipTrigger asChild>
-                      <Link href={"#contact"}>
-                        <Button
-                          variant={"outline"}
-                          className="block w-full overflow-hidden"
-                        >
-                          Hire Me
-                        </Button>
-                      </Link>
-                    </TooltipTrigger>
-                    <TooltipContent side="bottom">
-                      <p>pls 🥹 🙏</p>
-                    </TooltipContent>
-                  </Tooltip>
-                  <div className="flex items-center h-full gap-2">
-                    <Link
-                      href={config.social.github}
-                      target="_blank"
-                      className="cursor-can-hover"
-                    >
-                      <Button variant={"outline"}>
-                        <SiGithub size={24} />
-                      </Button>
-                    </Link>
-                    <Link
-                      href={config.social.linkedin}
-                      target="_blank"
-                      className="cursor-can-hover"
-                    >
-                      <Button variant={"outline"}>
-                        <SiLinkedin size={24} />
-                      </Button>
-                    </Link>
-                  </div>
+                <div className="flex items-center gap-2 w-full">
+                  <Link
+                    href={config.social.github}
+                    target="_blank"
+                    className="cursor-can-hover flex-1"
+                    aria-label="GitHub Profile"
+                  >
+                    <Button variant={"outline"} className="w-full flex items-center justify-center">
+                      <SiGithub size={20} />
+                    </Button>
+                  </Link>
+                  <Link
+                    href={config.social.linkedin}
+                    target="_blank"
+                    className="cursor-can-hover flex-1"
+                    aria-label="LinkedIn Profile"
+                  >
+                    <Button variant={"outline"} className="w-full flex items-center justify-center">
+                      <SiLinkedin size={20} />
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
